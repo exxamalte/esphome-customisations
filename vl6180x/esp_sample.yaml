@@ -1,0 +1,23 @@
+# ESPHome sample configuration using vl6180x sensor.
+
+esphome:
+  includes:
+    - "vl6180x_sensor.h"
+  libraries:
+    - "Adafruit_VL6180X"
+
+i2c:
+
+sensor:
+  - platform: custom
+    lambda: |-
+      auto vl6180x_sensor = new VL6180XSensor();
+      App.register_component(vl6180x_sensor);
+      return {vl6180x_sensor->distance_sensor, vl6180x_sensor->luminance_sensor};
+    sensors:
+      - name: "Distance"
+        unit_of_measurement: mm
+        accuracy_decimals: 0
+      - name: "Luminance"
+        unit_of_measurement: lux
+        accuracy_decimals: 1
