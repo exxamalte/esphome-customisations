@@ -1,0 +1,23 @@
+# ESPHome sample configuration using mls90614 sensor.
+
+esphome:
+  includes:
+    - "mlx90614_sensor.h"
+  libraries:
+    - "Adafruit MLX90614 Library"
+
+i2c:
+
+sensor:
+  - platform: custom
+    lambda: |-
+      auto mlx90614_sensor = new MLX90614Sensor();
+      App.register_component(mlx90614_sensor);
+      return {mlx90614_sensor->ambient_temperature_sensor, mlx90614_sensor->object_temperature_sensor};
+    sensors:
+      - name: "Ambient Temperature"
+        unit_of_measurement: °C
+        accuracy_decimals: 1
+      - name: "Object Temperature"
+        unit_of_measurement: °C
+        accuracy_decimals: 1
