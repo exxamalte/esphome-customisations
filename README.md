@@ -1,0 +1,2 @@
+# esphome-customisations
+ESPHome customisations.
