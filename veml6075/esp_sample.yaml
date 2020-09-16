@@ -1,0 +1,26 @@
+# ESPHome sample configuration using veml6075 sensor.
+
+esphome:
+  includes:
+    - "veml6075_sensor.h"
+  libraries:
+    - "Adafruit VEML6075 Library"
+
+i2c:
+
+sensor:
+  - platform: custom
+    lambda: |-
+      auto veml6075_sensor = new VEML6075Sensor();
+      App.register_component(veml6075_sensor);
+      return {veml6075_sensor->uva_sensor, veml6075_sensor->uvb_sensor, veml6075_sensor->uvi_sensor};
+    sensors:
+      - name: "UVA"
+        unit_of_measurement: "W/m²"
+        accuracy_decimals: 0
+      - name: "UVB"
+        unit_of_measurement: "W/m²"
+        accuracy_decimals: 0
+      - name: "UV Index"
+        unit_of_measurement: "index"
+        accuracy_decimals: 0
