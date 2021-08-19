@@ -5,6 +5,7 @@ esphome:
     - "mlx90614_sensor.h"
   libraries:
     - "Adafruit MLX90614 Library"
+    - SPI
 
 i2c:
 
