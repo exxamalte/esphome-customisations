@@ -4,8 +4,10 @@ esphome:
   includes:
     - "mlx90614_sensor.h"
   libraries:
-    - "Adafruit MLX90614 Library"
     - SPI
+    - Wire
+    - adafruit/Adafruit BusIO @ 1.9.6
+    - "Adafruit MLX90614 Library"
 
 i2c:
 

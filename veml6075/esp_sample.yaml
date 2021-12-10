@@ -4,6 +4,9 @@ esphome:
   includes:
     - "veml6075_sensor.h"
   libraries:
+    - SPI
+    - Wire
+    - adafruit/Adafruit BusIO @ 1.9.6
     - "Adafruit VEML6075 Library"
 
 i2c:
