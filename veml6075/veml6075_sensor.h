@@ -18,6 +18,9 @@ class VEML6075Sensor : public PollingComponent {
     void setup() override {
       ESP_LOGCONFIG(TAG_VEML6075, "Setting up VEML6070Sensor...");
       uv.begin();
+      #ifndef TAG
+      #define TAG "veml6075"
+      #endif
       LOG_SENSOR("  ", "UVA", this->uva_sensor);
       LOG_SENSOR("  ", "UVB", this->uvb_sensor);
       LOG_SENSOR("  ", "UVI", this->uvi_sensor);
