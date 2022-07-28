@@ -16,6 +16,9 @@ class VL6180XSensor : public PollingComponent {
     void setup() override {
       ESP_LOGCONFIG(TAG_VL6180X, "Setting up VL6180XSensor...");
       vl.begin();
+      #ifndef TAG
+      #define TAG "vl6180x"
+      #endif
       LOG_SENSOR("  ", "Luminance", this->luminance_sensor);
       LOG_SENSOR("  ", "Distance", this->distance_sensor);
     }
