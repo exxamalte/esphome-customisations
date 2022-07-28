@@ -22,6 +22,9 @@ class MLX90614Sensor : public PollingComponent {
         ESP_LOGE(TAG_MLX90614, "Error connecting to MLX sensor. Check wiring.");
         while (1);
       };
+      #ifndef TAG
+      #define TAG "mlx90614"
+      #endif
       LOG_SENSOR("  ", "Ambient temperature", this->ambient_temperature_sensor);
       LOG_SENSOR("  ", "Object temperature", this->object_temperature_sensor);
     }
