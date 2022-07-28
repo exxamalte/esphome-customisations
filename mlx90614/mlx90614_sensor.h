@@ -2,7 +2,7 @@
 #include <Wire.h>
 #include "Adafruit_MLX90614.h"
 
-#define TAG "mlx90614"
+#define TAG_MLX90614 "mlx90614"
 #define SENSOR_READ_RETRIES 5
 
 class MLX90614Sensor : public PollingComponent {
@@ -16,12 +16,15 @@ class MLX90614Sensor : public PollingComponent {
     MLX90614Sensor() : PollingComponent(15000) { }
 
     void setup() override {
-      ESP_LOGCONFIG(TAG, "Setting up MLX90614Sensor...");
+      ESP_LOGCONFIG(TAG_MLX90614, "Setting up MLX90614Sensor...");
       Serial.begin(9600);
       if (!mlx.begin()) {
-        ESP_LOGE(TAG, "Error connecting to MLX sensor. Check wiring.");
+        ESP_LOGE(TAG_MLX90614, "Error connecting to MLX sensor. Check wiring.");
         while (1);
       };
+      #ifndef TAG
+      #define TAG "mlx90614"
+      #endif
       LOG_SENSOR("  ", "Ambient temperature", this->ambient_temperature_sensor);
       LOG_SENSOR("  ", "Object temperature", this->object_temperature_sensor);
     }
@@ -36,10 +39,10 @@ class MLX90614Sensor : public PollingComponent {
         counter++;
       }
       if ((-40.0 <= ambient_temperature) && (ambient_temperature <= 125.0)) {
-        ESP_LOGD(TAG, "Ambient temperature measured: %f", ambient_temperature);
+        ESP_LOGD(TAG_MLX90614, "Ambient temperature measured: %f", ambient_temperature);
         ambient_temperature_sensor->publish_state(ambient_temperature);
       } else {
-        ESP_LOGW(TAG, "Ambient temperature out of range: %f", ambient_temperature);
+        ESP_LOGW(TAG_MLX90614, "Ambient temperature out of range: %f", ambient_temperature);
       }
 
       // Object temperature range: -70°C ... +380˚C
@@ -51,10 +54,10 @@ class MLX90614Sensor : public PollingComponent {
         counter++;
       }
       if ((-70.0 <= object_temperature) && (object_temperature <= 380.0)) {
-        ESP_LOGD(TAG, "Object temperature measured: %f", object_temperature);
+        ESP_LOGD(TAG_MLX90614, "Object temperature measured: %f", object_temperature);
         object_temperature_sensor->publish_state(object_temperature);
       } else {
-        ESP_LOGW(TAG, "Object temperature out of range: %f", object_temperature);
+        ESP_LOGW(TAG_MLX90614, "Object temperature out of range: %f", object_temperature);
       }
     }
 };
