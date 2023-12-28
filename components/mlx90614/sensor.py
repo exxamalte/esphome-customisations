@@ -23,7 +23,7 @@ CONF_OBJECT_TEMPERATURE = "object_temperature"
 CONFIG_SCHEMA = (
     cv.Schema(
         {
-            cv.GenerateID(): cv.declare_id(BME280Component),
+            cv.GenerateID(): cv.declare_id(MLX90614Component),
             cv.Optional(CONF_AMBIENT_TEMPERATURE): sensor.sensor_schema(
                 unit_of_measurement=UNIT_CELSIUS,
                 accuracy_decimals=1,
