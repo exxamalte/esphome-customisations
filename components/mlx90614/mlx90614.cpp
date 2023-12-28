@@ -2,8 +2,6 @@
 #include "mlx90614.h"
 #include "esphome/core/log.h"
 
-#include "Adafruit_MLX90614.h"
-
 #define SENSOR_READ_RETRIES 5
 
 namespace esphome {
