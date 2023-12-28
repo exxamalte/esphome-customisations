@@ -1,4 +1,5 @@
 import esphome.codegen as cg
+from esphome.components import i2c
 
 from esphome.const import (
     CONF_ID,

@@ -2,7 +2,7 @@
 
 esphome:
   includes:
-    - "mlx90614_sensor.h"
+    - "mlx90614.h"
   libraries:
     - SPI
     - Wire
