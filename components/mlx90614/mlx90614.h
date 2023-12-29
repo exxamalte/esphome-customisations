@@ -23,7 +23,7 @@ class MLX90614Component : public PollingComponent, public i2c::I2CDevice {
     sensor::Sensor *ambient_temperature_sensor_{nullptr};
     sensor::Sensor *object_temperature_sensor_{nullptr};
 
-    Adafruit_MLX90614 mlx;
+    Adafruit_MLX90614 mlx = Adafruit_MLX90614();
 
 };
 
